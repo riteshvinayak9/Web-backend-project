@@ -21,6 +21,16 @@ const Appointment = () => {
 
   const fetchDocInfo = async () => {
     const docInfo = doctors.find(doc => doc._id === docId)
+    console.log('doc from context:', docInfo)
+    try {
+      const resp = await axios.get(`${backendUrl}/api/doctor/${docId}`)
+      if (resp.data?.success && resp.data.doctor) {
+        setDocInfo(resp.data.doctor)
+      }
+    } catch (err) {
+      console.error('fetch doctor by id failed', err)
+      
+    }
     setDocInfo(docInfo)
   }
 
@@ -93,7 +103,9 @@ const Appointment = () => {
 
       const slotDate = day + '_' + month + '_' + year
 
-      const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, slotDate, slotTime }, { headers: { token } })
+      let locationId = docInfo.locationId
+
+      const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, locationId, slotDate, slotTime }, { headers: { token } })
 
       if (data.success) {
         toast.success(data.message)
@@ -142,6 +154,11 @@ const Appointment = () => {
           <div>
             <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">About <img src={assets.info_icon} alt="" /></p>
             <p className="text-sm text-gray-500 max-w-[700px] mt-1">{docInfo.about}</p>
+          </div>
+
+          <div>
+            <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">Location<img src={assets.info_icon} alt="" /></p>
+            <p className="text-sm text-gray-500 max-w-[700px] mt-1">{docInfo.locationId}</p>
           </div>
 
           <p className="text-gray-500 font-medium mt-4">Appointment fee: <span className='text-gray-600 font-bold'>{currencySymbol}{docInfo.fees}</span></p>

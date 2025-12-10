@@ -130,7 +130,7 @@ const bookAppointment = async (req, res) => {
 
   try {
 
-    const { userId, docId, slotDate, slotTime } = req.body
+    const { userId, docId, locationId, slotDate, slotTime } = req.body
 
     const docData = await doctorModel.findById(docId).select('-password')
 
@@ -157,7 +157,7 @@ const bookAppointment = async (req, res) => {
     delete docData.slots_booked
 
     const appointmentData = {
-      userId, docId,
+      userId, docId, locationId,
       userData, docData,
       amount: docData.fees,
       slotTime, slotDate,
@@ -205,9 +205,9 @@ const cancelAppointment = async (req, res) => {
     const appointmentData = await appointmentModel.findById(appointmentId)
 
     // verify appointment user
-    if (appointmentData.userId !== userId) {
-      return res.json({ success: false, message: 'Unauthorized action' })
-    }
+    // if (appointmentData.userId !== userId) {
+    //   return res.json({ success: false, message: 'Unauthorized action' })
+    // }
 
     await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true })
 
@@ -228,5 +228,7 @@ const cancelAppointment = async (req, res) => {
   }
 
 }
+
+
 
 export { registerUser, loginUser, getProfile, updateProfile, bookAppointment, listAppointment, cancelAppointment }

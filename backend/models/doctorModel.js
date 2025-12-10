@@ -13,9 +13,20 @@ const doctorSchema = new mongoose.Schema({
   fees: { type: Number, required: true },
   address: { type: Object, required: true },
   date: { type: Number, required: true },
-  slots_booked: { type: Object, default: {} }
+  slots_booked: { type: Object, default: {} },
+  gender: {
+    type: String,
+    required: true,
+  },
+    phone: {
+    type: String,
+    trim: true,
+  },
+  locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'location' }
+
 }, { minimize: false })
 
 const doctorModel = mongoose.models.doctor || mongoose.model('doctor', doctorSchema)
 
 export default doctorModel
+
