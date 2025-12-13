@@ -18,7 +18,11 @@ const AddDoctor = () => {
   const [address1, setAddress1] = useState('')
   const [address2, setAddress2] = useState('')
 
+<<<<<<< HEAD
   const { backendUrl, aToken } = useContext(AdminContext)
+=======
+  const { aToken } = useContext(AdminContext)
+>>>>>>> 051f6eb (updated page contents)
 
   const onSubmitHandler = async (event) => {
     event.preventDefault()
@@ -46,7 +50,11 @@ const AddDoctor = () => {
         console.log(`${key} : ${value}`)
       })
 
+<<<<<<< HEAD
       const { data } = await axios.post(backendUrl + '/api/admin/add-doctor', formData, { headers: { aToken } })
+=======
+      const { data } = await axios.post('http://localhost:4000/api/admin/add-doctor', formData, { headers: { aToken } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         toast.success(data.message)

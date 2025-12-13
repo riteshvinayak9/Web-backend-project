@@ -3,6 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar'
+<<<<<<< HEAD
+=======
+import Home from './pages/Home'
+>>>>>>> 051f6eb (updated page contents)
 import Doctors from './pages/Doctors'
 import Login from './pages/Login'
 import About from './pages/About'
@@ -18,7 +22,11 @@ const App = () => {
       <ToastContainer />
       <Navbar />
       <Routes>
+<<<<<<< HEAD
         {/* <Route path='/doctors' element={<Home />} /> */}
+=======
+        <Route path='/' element={<Home />} />
+>>>>>>> 051f6eb (updated page contents)
         <Route path='/doctors' element={<Doctors />} />
         <Route path='/doctors/:speciality' element={<Doctors />} />
         <Route path='/login' element={<Login />} />

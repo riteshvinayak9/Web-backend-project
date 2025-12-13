@@ -17,7 +17,11 @@ const AppContextProvider = (props) => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.get(backendUrl + '/api/doctor/list')
+=======
+      const { data } = await axios.get('http://localhost:4000/api/doctor/list')
+>>>>>>> 051f6eb (updated page contents)
       if (data.success) {
         setDoctors(data.doctors)
       } else {
@@ -35,7 +39,11 @@ const AppContextProvider = (props) => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
+=======
+      const { data } = await axios.get('http://localhost:4000/api/user/get-profile', { headers: { token } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         setUserData(data.userData)

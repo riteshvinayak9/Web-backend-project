@@ -18,7 +18,11 @@ const MyAppointments = () => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.get(backendUrl + '/api/user/appointments', { headers: { token } })
+=======
+      const { data } = await axios.get('http://localhost:4000/api/user/appointments', { headers: { token } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         setAppointments(data.appointments.reverse())
@@ -36,7 +40,11 @@ const MyAppointments = () => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.post(backendUrl + '/api/user/cancel-appointment', { appointmentId }, { headers: { token } })
+=======
+      const { data } = await axios.post('http://localhost:4000/api/user/cancel-appointment', { appointmentId }, { headers: { token } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         toast.success(data.message)
@@ -66,14 +74,26 @@ const MyAppointments = () => {
       <div>
         {appointments.map((item, index) => (
           <div className='grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b' key={index}>
+<<<<<<< HEAD
             {/* <div>
               <img className='w-32 bg-indigo-50' src={item.docData.image} alt="" />
             </div> */}
+=======
+            <div>
+              <img className='w-32 bg-indigo-50' src={item.docData.image} alt="" />
+            </div>
+>>>>>>> 051f6eb (updated page contents)
 
             <div className='flex-1 text-sm text-zinc-600'>
               <p className='text-neutral-800 font-semibold'>{item.docData.name}</p>
               <p>{item.docData.speciality}</p>
+<<<<<<< HEAD
 
+=======
+              <p className='text-zinc-700 font-medium mt-1'>Address:</p>
+              <p className='text-xs'>{item.docData.address.line1}</p>
+              <p className='text-xs'>{item.docData.address.line2}</p>
+>>>>>>> 051f6eb (updated page contents)
               <p className='text-sm mt-1'><span className='text-sm text-neutral-700 font-medium'>Date & Time:</span> {slotDateFormat(item.slotDate)} |  {item.slotTime}</p>
             </div>
 

@@ -17,7 +17,11 @@ const AdminContextProvider = (props) => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.post(backendUrl + '/api/admin/all-doctors', {}, { headers: { aToken } })
+=======
+      const { data } = await axios.post('http://localhost:4000/api/admin/all-doctors', {}, { headers: { aToken } })
+>>>>>>> 051f6eb (updated page contents)
       if (data.success) {
         setDoctors(data.doctors)
         console.log(data.doctors)
@@ -34,7 +38,11 @@ const AdminContextProvider = (props) => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.post(backendUrl + '/api/admin/change-availability', { docId }, { headers: { aToken } })
+=======
+      const { data } = await axios.post('http://localhost:4000/api/admin/change-availability', { docId }, { headers: { aToken } })
+>>>>>>> 051f6eb (updated page contents)
       if (data.success) {
         toast.success(data.message)
         getAllDoctors()
@@ -52,7 +60,11 @@ const AdminContextProvider = (props) => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.get(backendUrl, '/api/admin/appointments', { headers: { aToken } })
+=======
+      const { data } = await axios.get('http://localhost:4000/api/admin/appointments', { headers: { aToken } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         setAppointments(data.appointments)
@@ -71,7 +83,11 @@ const AdminContextProvider = (props) => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.post(backendUrl + '/api/admin/cancel-appointment', { appointmentId }, { headers: { aToken } })
+=======
+      const { data } = await axios.post('http://localhost:4000/api/admin/cancel-appointment', { appointmentId }, { headers: { aToken } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         toast.success(data.message)
@@ -90,7 +106,11 @@ const AdminContextProvider = (props) => {
 
     try {
 
+<<<<<<< HEAD
       const { data } = await axios.get(backendUrl + '/api/admin/dashboard', { headers: { aToken } })
+=======
+      const { data } = await axios.get('http://localhost:4000/api/admin/dashboard', { headers: { aToken } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         setDashData(data.dashData)

@@ -130,7 +130,11 @@ const bookAppointment = async (req, res) => {
 
   try {
 
+<<<<<<< HEAD
     const { userId, docId, locationId, slotDate, slotTime } = req.body
+=======
+    const { userId, docId, slotDate, slotTime } = req.body
+>>>>>>> 051f6eb (updated page contents)
 
     const docData = await doctorModel.findById(docId).select('-password')
 
@@ -157,7 +161,11 @@ const bookAppointment = async (req, res) => {
     delete docData.slots_booked
 
     const appointmentData = {
+<<<<<<< HEAD
       userId, docId, locationId,
+=======
+      userId, docId,
+>>>>>>> 051f6eb (updated page contents)
       userData, docData,
       amount: docData.fees,
       slotTime, slotDate,
@@ -174,11 +182,15 @@ const bookAppointment = async (req, res) => {
 
   } catch (error) {
     console.log(error)
+<<<<<<< HEAD
     
       if (error.code === 11000) {
         return res.json({ success: false, message: "You already have an appointment at this time." });
       }
       res.json({ success: false, message: error.message })
+=======
+    res.json({ success: false, message: error.message })
+>>>>>>> 051f6eb (updated page contents)
   }
 
 }
@@ -209,9 +221,15 @@ const cancelAppointment = async (req, res) => {
     const appointmentData = await appointmentModel.findById(appointmentId)
 
     // verify appointment user
+<<<<<<< HEAD
     // if (appointmentData.userId !== userId) {
     //   return res.json({ success: false, message: 'Unauthorized action' })
     // }
+=======
+    if (appointmentData.userId !== userId) {
+      return res.json({ success: false, message: 'Unauthorized action' })
+    }
+>>>>>>> 051f6eb (updated page contents)
 
     await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true })
 
@@ -233,6 +251,9 @@ const cancelAppointment = async (req, res) => {
 
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 051f6eb (updated page contents)
 export { registerUser, loginUser, getProfile, updateProfile, bookAppointment, listAppointment, cancelAppointment }

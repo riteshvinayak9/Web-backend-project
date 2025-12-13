@@ -19,6 +19,7 @@ const Appointment = () => {
   const [slotIndex, setSlotIndex] = useState(0)
   const [slotTime, setSlotTime] = useState('')
 
+<<<<<<< HEAD
   const [autoSelectedTomorrow, setAutoSelectedTomorrow] = useState(false)
 
 
@@ -34,6 +35,10 @@ const Appointment = () => {
       console.error('fetch doctor by id failed', err)
       
     }
+=======
+  const fetchDocInfo = async () => {
+    const docInfo = doctors.find(doc => doc._id === docId)
+>>>>>>> 051f6eb (updated page contents)
     setDocInfo(docInfo)
   }
 
@@ -106,9 +111,13 @@ const Appointment = () => {
 
       const slotDate = day + '_' + month + '_' + year
 
+<<<<<<< HEAD
       let locationId = docInfo.locationId
 
       const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, locationId, slotDate, slotTime }, { headers: { token } })
+=======
+      const { data } = await axios.post('http://localhost:4000/api/user/book-appointment', { docId, slotDate, slotTime }, { headers: { token } })
+>>>>>>> 051f6eb (updated page contents)
 
       if (data.success) {
         toast.success(data.message)
@@ -120,6 +129,7 @@ const Appointment = () => {
 
     } catch (error) {
       console.log(error)
+<<<<<<< HEAD
       const msg = error?.response?.data?.message || error?.message
       toast.error(msg)
     }
@@ -141,6 +151,12 @@ const Appointment = () => {
     }
   }, [docSlots, autoSelectedTomorrow])
 
+=======
+      toast.error(error.message)
+    }
+  }
+
+>>>>>>> 051f6eb (updated page contents)
   useEffect(() => {
     fetchDocInfo(docInfo)
   }, [doctors, docId])
@@ -176,11 +192,14 @@ const Appointment = () => {
             <p className="text-sm text-gray-500 max-w-[700px] mt-1">{docInfo.about}</p>
           </div>
 
+<<<<<<< HEAD
           <div>
             <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">Location<img src={assets.info_icon} alt="" /></p>
             <p className="text-sm text-gray-500 max-w-[700px] mt-1">{docInfo.locationId}</p>
           </div>
 
+=======
+>>>>>>> 051f6eb (updated page contents)
           <p className="text-gray-500 font-medium mt-4">Appointment fee: <span className='text-gray-600 font-bold'>{currencySymbol}{docInfo.fees}</span></p>
         </div>
       </div>

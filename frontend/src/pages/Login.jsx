@@ -19,7 +19,11 @@ const Login = () => {
     try {
 
       if (state === 'Sign Up') {
+<<<<<<< HEAD
         const { data } = await axios.post(backendUrl + '/api/user/register', { name, password, email })
+=======
+        const { data } = await axios.post('http://localhost:4000/api/user/register', { name, password, email })
+>>>>>>> 051f6eb (updated page contents)
         if (data.success) {
           localStorage.setItem('token', data.token)
           setToken(data.token)
@@ -27,7 +31,11 @@ const Login = () => {
           toast.error(data.message)
         }
       } else {
+<<<<<<< HEAD
         const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
+=======
+        const { data } = await axios.post('http://localhost:4000/api/user/login', { email, password })
+>>>>>>> 051f6eb (updated page contents)
         if (data.success) {
           localStorage.setItem('token', data.token)
           setToken(data.token)
@@ -56,7 +64,11 @@ const Login = () => {
         {
           state === 'Sign Up' && (
             <div className='w-full'>
+<<<<<<< HEAD
               <p>Full_Name</p>
+=======
+              <p>Full Name</p>
+>>>>>>> 051f6eb (updated page contents)
               <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="text" onChange={(e) => setName(e.target.value)} value={name} required />
             </div>
           )

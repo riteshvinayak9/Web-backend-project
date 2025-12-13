@@ -17,7 +17,11 @@ const Login = () => {
     try {
 
       if (state === 'Admin') {
+<<<<<<< HEAD
         const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password })
+=======
+        const { data } = await axios.post('http://localhost:4000/api/admin/login', { email, password })
+>>>>>>> 051f6eb (updated page contents)
         if (data.success) {
           localStorage.setItem('aToken', data.token)
           setAToken(data.token)
@@ -25,11 +29,25 @@ const Login = () => {
           toast.error(data.message)
         }
       } else {
+<<<<<<< HEAD
 
       }
 
     } catch (error) {
 
+=======
+      const { data } = await axios.post('http://localhost:4000/api/doctor/login', { email, password })
+      if (data.success) {
+        localStorage.setItem('dToken', data.token);
+      } else {
+        toast.error(data.message);
+      }
+      }
+
+    } catch (error) {
+      console.error(error);
+    toast.error('Login failed. Please try again.');
+>>>>>>> 051f6eb (updated page contents)
     }
   }
 

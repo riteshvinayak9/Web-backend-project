@@ -20,7 +20,11 @@ const doctorList = async (req, res) => {
 
   try {
 
+<<<<<<< HEAD
     const doctors = await doctorModel.find({}).select('-email')
+=======
+    const doctors = await doctorModel.find({}).select(['-password', '-email'])
+>>>>>>> 051f6eb (updated page contents)
     res.json({ success: true, doctors })
 
   } catch (error) {
