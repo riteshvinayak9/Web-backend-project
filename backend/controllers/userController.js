@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
     }
 
     // validating email format
-    if (!validator.isEmail(email)) {
+    if (!validator.isEmail()) {
       return res.json({ success: false, message: 'Enter a valid email' })
     }
 
