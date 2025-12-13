@@ -174,7 +174,11 @@ const bookAppointment = async (req, res) => {
 
   } catch (error) {
     console.log(error)
-    res.json({ success: false, message: error.message })
+    
+      if (error.code === 11000) {
+        return res.json({ success: false, message: "You already have an appointment at this time." });
+      }
+      res.json({ success: false, message: error.message })
   }
 
 }

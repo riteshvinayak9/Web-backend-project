@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
 import Doctors from './pages/Doctors'
 import Login from './pages/Login'
 import About from './pages/About'
@@ -19,7 +18,7 @@ const App = () => {
       <ToastContainer />
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        {/* <Route path='/doctors' element={<Home />} /> */}
         <Route path='/doctors' element={<Doctors />} />
         <Route path='/doctors/:speciality' element={<Doctors />} />
         <Route path='/login' element={<Login />} />

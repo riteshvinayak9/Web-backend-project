@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try{
   mongoose.connection.on('connected', () => console.log('Database Connected'))
-  await mongoose.connect(`${process.env.MONGODB_URI}/prescripto`)
+  await mongoose.connect(`${process.env.MONGODB_URI}/WebBackendProject`)
   }
   catch(error){
     console.log('Error connecting to database: ', error.message)

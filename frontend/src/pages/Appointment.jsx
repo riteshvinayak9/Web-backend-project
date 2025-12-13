@@ -19,6 +19,9 @@ const Appointment = () => {
   const [slotIndex, setSlotIndex] = useState(0)
   const [slotTime, setSlotTime] = useState('')
 
+  const [autoSelectedTomorrow, setAutoSelectedTomorrow] = useState(false)
+
+
   const fetchDocInfo = async () => {
     const docInfo = doctors.find(doc => doc._id === docId)
     console.log('doc from context:', docInfo)
@@ -117,9 +120,26 @@ const Appointment = () => {
 
     } catch (error) {
       console.log(error)
-      toast.error(error.message)
+      const msg = error?.response?.data?.message || error?.message
+      toast.error(msg)
     }
   }
+
+    useEffect(() => {
+    // when opening a new doctor's appointment page, reset selection
+    setAutoSelectedTomorrow(false)
+    setSlotIndex(0)
+    setSlotTime('')
+  }, [docId])
+
+  useEffect(() => {
+    // once slots are loaded, default to tomorrow (index 1)
+    if (!autoSelectedTomorrow && docSlots.length > 1) {
+      setSlotIndex(1)
+      setSlotTime('')
+      setAutoSelectedTomorrow(true)
+    }
+  }, [docSlots, autoSelectedTomorrow])
 
   useEffect(() => {
     fetchDocInfo(docInfo)
